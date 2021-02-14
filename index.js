@@ -1,12 +1,18 @@
-//Low to high inclusive
 function range(low, high) {
-    let dist = high - low
-    return Math.random() * dist + low
+    return Math.random() * (high - low) + low
 }
 
+// WARNING: High exclusive
 function rangeInt(low, high) {
-    let dist = high - low
-    return Math.round(Math.random() * dist + low)
+    low = Math.ceil(low)
+    high = Math.floor(high)
+    return Math.floor(Math.random() * (high - low) + low) //The maximum is exclusive and the minimum is inclusive
+}
+
+function rangeIntInclusive(low, high) {
+    low = Math.ceil(low)
+    high = Math.floor(high)
+    return Math.floor(Math.random() * (high - low + 1) + low) //The maximum is inclusive and the minimum is inclusive
 }
 
 // Zero to high
@@ -26,20 +32,20 @@ function randBool(chanceOfTrue) {
     } else return Math.random() <= 0.5
 }
 
-// Choose one element randomly
+// Choose one array element randomly
 function randChoice(array) {
-    let choice = rangeInt(0, array.length - 1)
+    let choice = rangeInt(0, array.length)
     return array[choice]
 }
 
 function randChoiceSplit(string, splitChar = ",") {
     let array = string.split(splitChar)
-    let choice = rangeInt(0, array.length - 1)
+    let choice = rangeInt(0, array.length)
     return array[choice]
 }
 
 // Choose pickNum of elements randomly with no duplicates
-function randChoiceNoDups(array, pickNum) {
+function randChoiceNoDupes(array, pickNum) {
     if (pickNum > array.length) {
         throw new Error(
             "Number of picks cannot be greater than the length of the given array"
@@ -59,18 +65,30 @@ function randChoiceNoDups(array, pickNum) {
     return result
 }
 
-function gaussianRandom(start, end, variation) {
-    return Math.floor(start + _gaussianRand(variation) * (end - start + 1))
-}
-
-function _gaussianRand(variation) {
-    let rand = 0
-
-    for (let i = 0; i < variation; i += 1) {
-        rand += Math.random()
+function randChoiceDupes(array, pickNum) {
+    const output = []
+    for (let x = 0; x < pickNum; x++) {
+        output.push(randChoice(array))
     }
 
-    return rand / variation
+    return output
+}
+
+// https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve/36481059#36481059
+
+function randNormal(min, max, skew) {
+    let u = 0,
+        v = 0
+    while (u === 0) u = Math.random() //Converting [0,1) to (0,1)
+    while (v === 0) v = Math.random()
+    let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v)
+
+    num = num / 10.0 + 0.5 // Translate to 0 -> 1
+    if (num > 1 || num < 0) num = randn_bm(min, max, skew) // resample between 0 and 1 if out of range
+    num = Math.pow(num, skew) // Skew
+    num *= max - min // Stretch to fill range
+    num += min // offset to min
+    return num
 }
 
 function randChoiceTree(tree) {}
@@ -91,12 +109,15 @@ if (typeof module !== "undefined") {
     module.exports = {
         range,
         rangeInt,
+        rangeIntInclusive,
         randBool,
         range0,
         range1,
+        randNormal,
         randChoice,
         randChoiceSplit,
-        randChoiceNoDups,
-        gaussianRandom,
+        randChoiceNoDupes,
+        randChoiceDupes,
+        randChoicePercent,
     }
 }
