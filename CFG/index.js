@@ -3,7 +3,9 @@ import { expandCFG } from "./expander"
 const defaultStartSymbol = { type: "SYMBOL", tokenText: "start", modifiers: [] }
 
 export default {
-    expand: function(cfg, output) {
-        return expandCFG(defaultStartSymbol, cfg, output)
+    expand: function(cfg) {
+        const output = []
+        expandCFG(defaultStartSymbol, cfg, output)
+        return output
     },
 }
