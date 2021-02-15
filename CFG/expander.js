@@ -5,7 +5,7 @@ const { getTokens } = require("./lexer")
 //   { type: 'STRING', tokenText: 'Hello ', modifiers:[] },
 //   { type: 'SYMBOL', tokenText: 'Adj' },
 // Grammar has <> around symbols only within tokenText
-function expand(input, grammar, output) {
+export function expandCFG(input, grammar, output) {
     //console.log("input", input)
 
     if (input.type === "SYMBOL") {
@@ -18,7 +18,7 @@ function expand(input, grammar, output) {
         if (tokens.length > 1) {
             for (let token of tokens) {
                 //console.log("token", token)
-                expand(token, grammar, output)
+                expandCFG(token, grammar, output)
 
                 if (token.type === "SYMBOL") {
                     for (let modName of token.modifiers) {
@@ -32,7 +32,7 @@ function expand(input, grammar, output) {
             }
         } else {
             //console.log("No tokens found, adding:", choice)
-            expand(tokens[0], grammar, output)
+            expandCFG(tokens[0], grammar, output)
         }
     } else {
         output.push(input.tokenText)
@@ -58,5 +58,3 @@ const modifiers = {
     //      Choose(2)
     //      ChooseUpTo(5)
 }
-
-export default { expand }

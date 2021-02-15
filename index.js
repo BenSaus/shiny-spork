@@ -1,8 +1,7 @@
 import generator from "./generator"
-export { generator }
 
-import grammar from "./Grammar"
-export { grammar }
+import cfg from "./CFG"
+export { cfg, generator }
 
 import {
     range,
