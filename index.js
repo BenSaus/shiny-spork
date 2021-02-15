@@ -1,6 +1,9 @@
 import generator from "./generator"
 export { generator }
 
+import grammar from "./Grammar"
+export { grammar }
+
 import {
     range,
     rangeInt,
