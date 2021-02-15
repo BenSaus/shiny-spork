@@ -1,19 +1,19 @@
 {
-  "name": "shiny-spork",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BenSaus/shiny-spork.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BenSaus/shiny-spork/issues"
-  },
-  "homepage": "https://github.com/BenSaus/shiny-spork#readme"
+    "name": "shiny-spork",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BenSaus/shiny-spork.git"
+    },
+    "author": "Ben Sauskojus",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BenSaus/shiny-spork/issues"
+    },
+    "homepage": "https://github.com/BenSaus/shiny-spork#readme"
 }
