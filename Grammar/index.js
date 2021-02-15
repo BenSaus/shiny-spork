@@ -4,6 +4,6 @@ import { expandCall } from "./expander"
 
 const defaultStartSymbol = { type: "SYMBOL", tokenText: "start", modifiers: [] }
 
-export function expand(start = defaultStartSymbol, grammar, output) {
-    return expandCall(start, grammar, output)
+export function expand(grammar, output) {
+    return expandCall(defaultStartSymbol, grammar, output)
 }
