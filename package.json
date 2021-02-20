@@ -15,5 +15,6 @@
     "bugs": {
         "url": "https://github.com/BenSaus/shiny-spork/issues"
     },
-    "homepage": "https://github.com/BenSaus/shiny-spork#readme"
+    "homepage": "https://github.com/BenSaus/shiny-spork#readme",
+    "type": "module"
 }

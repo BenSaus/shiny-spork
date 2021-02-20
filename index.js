@@ -1,34 +1,5 @@
-import generator from "./generator"
+import rand from "./rand.js"
+import generator from "./generator.js"
+import cfg from "./CFG/index.js"
 
-import cfg from "./CFG"
-export { cfg, generator }
-
-import {
-    range,
-    rangeInt,
-    rangeIntInclusive,
-    randBool,
-    range0,
-    range1,
-    randNormal,
-    randChoice,
-    randChoiceSplit,
-    randChoiceNoDupes,
-    randChoiceDupes,
-    randChoicePercent,
-} from "./rand"
-
-export default {
-    range,
-    rangeInt,
-    rangeIntInclusive,
-    randBool,
-    range0,
-    range1,
-    randNormal,
-    randChoice,
-    randChoiceSplit,
-    randChoiceNoDupes,
-    randChoiceDupes,
-    randChoicePercent,
-}
+export default { ...rand, generator, cfg }

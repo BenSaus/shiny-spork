@@ -105,19 +105,17 @@ function randChoicePercent() {
     }
 }
 
-if (typeof module !== "undefined") {
-    module.exports = {
-        range,
-        rangeInt,
-        rangeIntInclusive,
-        randBool,
-        range0,
-        range1,
-        randNormal,
-        randChoice,
-        randChoiceSplit,
-        randChoiceNoDupes,
-        randChoiceDupes,
-        randChoicePercent,
-    }
+export default {
+    range,
+    rangeInt,
+    rangeIntInclusive,
+    randBool,
+    range0,
+    range1,
+    randNormal,
+    randChoice,
+    randChoiceSplit,
+    randChoiceNoDupes,
+    randChoiceDupes,
+    randChoicePercent,
 }

@@ -1,4 +1,4 @@
-import { randChoice, randChoiceNoDupes } from "./rand"
+import rand from "./rand.js"
 
 // Given a template object produce random data
 // The first param is the entire input object.
@@ -35,7 +35,7 @@ function shallowGenerate(obj) {
         //If the key is an array, choose a value from it
         if (Array.isArray(obj[key])) {
             // console.log("Array");
-            output[key] = randChoice(obj[key])
+            output[key] = rand.randChoice(obj[key])
         } else if (typeof obj[key] === "string") {
             // This value has been hardwired, so simply copy it to the output
             output[key] = obj[key]
@@ -59,7 +59,7 @@ function shallowGenerate(obj) {
                             // output[key] = randChoice(subObj.values[subKey]);
                             list = subObj.values[subKey]
                         } else if (choiceNum > 1) {
-                            list = randChoiceNoDupes(
+                            list = rand.randChoiceNoDupes(
                                 subObj.values[subKey],
                                 choiceNum
                             )
@@ -86,9 +86,9 @@ function getChoiceNumber(chooseNumString) {
 
 function getChoices(list, choiceNum) {
     if (choiceNum === 1) {
-        return randChoice(list)
+        return rand.randChoice(list)
     } else if (choiceNum > 1) {
-        return randChoiceNoDupes(list, choiceNum)
+        return rand.randChoiceNoDupes(list, choiceNum)
     }
 }
 

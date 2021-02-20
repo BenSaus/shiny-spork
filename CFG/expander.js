@@ -1,5 +1,5 @@
-const { randChoice } = require("../rand")
-const { getTokens } = require("./lexer")
+import rand from "../rand.js"
+import { getTokens } from "./lexer.js"
 
 // Input is expected to be an object
 //   { type: 'STRING', tokenText: 'Hello ', modifiers:[] },
@@ -9,7 +9,7 @@ export function expandCFG(input, grammar, output) {
     //console.log("input", input)
 
     if (input.type === "SYMBOL") {
-        const choice = randChoice(grammar[input.tokenText])
+        const choice = rand.randChoice(grammar[input.tokenText])
         //console.log("choice", choice)
 
         const tokens = getTokens(choice)
