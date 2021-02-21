@@ -1,4 +1,4 @@
-import { expandCFG } from "./expander.js"
+import { expandCFG } from "./expander"
 
 const defaultStartSymbol = { type: "SYMBOL", tokenText: "start", modifiers: [] }
 

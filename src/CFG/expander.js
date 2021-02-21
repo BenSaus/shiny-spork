@@ -1,5 +1,5 @@
-import rand from "../rand.js"
-import { getTokens } from "./lexer.js"
+import rand from "../rand"
+import { getTokens } from "./lexer"
 
 // Input is expected to be an object
 //   { type: 'STRING', tokenText: 'Hello ', modifiers:[] },
@@ -57,4 +57,5 @@ const modifiers = {
     //      ChooseNoDupes(2)
     //      Choose(2)
     //      ChooseUpTo(5)
+    //      a or an
 }

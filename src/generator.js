@@ -1,4 +1,4 @@
-import rand from "./rand.js"
+import rand from "./rand"
 
 // Given a template object produce random data
 // The first param is the entire input object.
